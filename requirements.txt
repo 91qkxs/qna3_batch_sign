@@ -1,0 +1,4 @@
+requests==2.31.0
+web3==6.15.0
+Faker==22.7.0
+loguru==0.7.2
