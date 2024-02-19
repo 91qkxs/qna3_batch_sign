@@ -88,7 +88,7 @@ class Qna3Utils(object):
                     "Origin": "https://qna3.ai",
                     "x-lang": "chinese"
                 },
-                data=json.dumps({"wallet_address": wallet_address, "signature": signature}),
+                data=json.dumps({"wallet_address": wallet_address, "signature": signature ,"invite_code":"tuH97CY3"}),
                 # proxies=proxy,
                 timeout=30  # 设置超时时间为30秒
 

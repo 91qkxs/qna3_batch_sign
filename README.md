@@ -20,6 +20,9 @@
 - 细节注意：
 
   ​		代理相关：号多的话建议挂代理，把这里的代理相关替换为你的，不会百度一下就好了，几十个号就没必要
+- 签到时间问题：
+
+  ​		QNA3每天早上八点刷新签到时间，每次签到完过一会再去查询是否签到成功，有延时，虽然opbnb的gas几乎为零，没必要一直浪费
 
   ![QvCQL1](https://raw.githubusercontent.com/91qkxs/tc/file/uPic/QvCQL1.png)
 
