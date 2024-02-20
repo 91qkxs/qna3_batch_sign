@@ -9,15 +9,13 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 
 
 def perform_claim_verification(wallet_address, private_key, qna3_util):
-    message_to_sign = "AI + DYOR = Ultimate Answer to Unlock Web3 Universe"
-
     # 发送签到交易
     tx_hash = qna3_util.send_claim_tx(
         to="0xB342e7D33b806544609370271A8D074313B7bc30",
         from_=wallet_address,
         data='0xe95a644f0000000000000000000000000000000000000000000000000000000000000001',
-        gas_price=qna3_util.web3.to_wei('0.00002', 'gwei'),
-        gas_limit=50000,
+        gas_price=int(qna3_util.web3.eth.gas_price * 1.2),
+        gas_limit=50000 + random.randint(1, 10000),
         chain_id=204,
         private_key=private_key
     )
@@ -46,6 +44,8 @@ def perform_claim_verification(wallet_address, private_key, qna3_util):
 # 示例用法
 if __name__ == "__main__":
 
+    invite_code = ''
+
     qna3_util = Qna3Utils()
     # 将钱包地址和私钥存入 Redis，设置过期时间为一天
     wallets = CommonUtils.read_wallets_from_file('./wallets.txt')
@@ -62,7 +62,7 @@ if __name__ == "__main__":
         # 获取签名
         signature = qna3_util.signature_opbnb_chain(private_key, wallet_address, message_to_sign)
         # 进行登录
-        token = qna3_util.login(wallet_address, signature)
+        token = qna3_util.login(wallet_address, signature,invite_code)
         if token is not None:
             # 检验当天是否签到
             state = qna3_util.check_sign_state(token)
@@ -74,4 +74,4 @@ if __name__ == "__main__":
         else:
             logging.info(f"{(wallet_address)}: 获取token异常")
 
-        time.sleep(random.randint(5, 10))
+        time.sleep(random.randint(7, 10))

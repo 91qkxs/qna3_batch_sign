@@ -1,3 +1,0 @@
-addresss1,private_key1
-addresss2,private_key2
-addresss3,private_key3
